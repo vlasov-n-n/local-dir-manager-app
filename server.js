@@ -17,6 +17,3 @@ app.use(function(req, res, next) {
 app.use('/api/dir', dir);
 
 app.listen(port, () => console.log(`Server started on port ${port}`));
-
-local-dir-manager-app
-Client-server application for local directory management
