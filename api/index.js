@@ -1,9 +1,10 @@
-const express = require('express');
-const bodyParser = require('body-parser');
+import express from 'express';
+import bodyParser from 'body-parser';
 
-const dir = require('./api/dir');
+const {defaultPort} = require('../config/env');
+const dir = require('./routes');
 
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || defaultPort;
 
 const app = express();
 

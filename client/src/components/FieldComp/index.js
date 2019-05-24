@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 import {DirectoryButton, DirectoryInput, FieldTitle, FieldWrap} from './DirFieldStyleComp';
 import {newDirBtn, newDirTitle} from '../../constants/HomeCostants';
+import {SectionWrap} from '../Common/StyledComponents';
 
 class FieldComp extends Component {
   static propTypes = {
@@ -46,7 +47,7 @@ class FieldComp extends Component {
 
   render() {
     return (
-      <FieldWrap>
+      <SectionWrap>
         <FieldTitle>{newDirTitle}</FieldTitle>
         <DirectoryInput
           type="text"
@@ -60,7 +61,7 @@ class FieldComp extends Component {
         >
           {newDirBtn}
         </DirectoryButton>
-      </FieldWrap>
+      </SectionWrap>
     );
   }
 }

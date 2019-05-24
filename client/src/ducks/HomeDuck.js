@@ -15,7 +15,7 @@ export const initState = {
   loadingError: null,
   directories: {
     defaultPath: '/',
-    dirList: []
+    directories: []
   },
 };
 

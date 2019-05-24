@@ -1,26 +1,26 @@
 /**
  * Directories list item
- * @typedef Directory
+ * @typedef DirectoryItem
  * @type {Object}
- * @property {string} date The date create or change directory,
- * @property {string} name The name directory,
- * @property {Array<Directory>} dirs The number directories in the current directory,
- * @property {Array<File>} files The number files in the current directory,
- * @property {string} size The size current directory,
- */
-
-/**
- * File
- * @typedef File
- * @type {Object}
- * @property {string} name
- * @property {string} size
+ * @property {string} name The item name,
+ * @property {string} type The item type,
+ * @property {date} date The date create or change item,
+ * @property {number} size The items size,
+ * @property {string} path The items path,
+ * @property {string} child
  */
 
 /**
  * Directories list
+ * @typedef DirectoriesList
+ * @type {Array}
+ * @property {DirectoryItem} directories The list directories
+ */
+
+/**
+ * Directories info
  * @typedef Directories
  * @type {Object}
  * @property {string} defaultPath The default directory location,
- * @property {Array<Directory>} directories The list directories
+ * @property {DirectoriesList} directories The list directories
  */

@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, {PureComponent} from 'react';
 import * as PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
@@ -15,15 +15,17 @@ class Home extends PureComponent {
     getAllDirAction: PropTypes.func.isRequired,
     /** @type {function} Create new directory */
     createDirAction: PropTypes.func.isRequired,
-    /** @type Directories */
+    /** @type {Directories} */
     directories: PropTypes.shape({
       defaultPath: PropTypes.string.isRequired,
       dirList: PropTypes.arrayOf(PropTypes.shape({
         date: PropTypes.string.isRequired,
         name: PropTypes.string.isRequired,
-        dirs: PropTypes.number.isRequired,
-        files: PropTypes.number.isRequired,
-        size: PropTypes.string.isRequired,
+        type: PropTypes.string.isRequired,
+        parent: PropTypes.string.isRequired,
+        size: PropTypes.number.isRequired,
+        path: PropTypes.string.isRequired,
+        child: PropTypes.array
       }))
     })
   };
@@ -32,8 +34,8 @@ class Home extends PureComponent {
     super(props);
     this.state = {
       /** @type {boolean} */
-      modalIsOpen: false,
-      /** @type {Directory || null} */
+      modalIsOpen: true,
+      /** @type {DirectoryItem || null} */
       currentDirInfo: null
     }
   }
@@ -47,11 +49,11 @@ class Home extends PureComponent {
 
   /**
    * Open modal with current directory information
-   * @param {Directory} directory
+   * @param {DirectoryItem} directory
    */
   handleOpenModal = (directory) => {
     this.setState({
-      modalIsOpen: true,
+      modalIsOpen: false,
       currentDirInfo: directory
     })
   };
@@ -68,7 +70,9 @@ class Home extends PureComponent {
 
   render() {
     const {
+      /** @type {Directories} */
       directories,
+      /** @type {function} */
       createDirAction
     } = this.props;
 
@@ -81,11 +85,12 @@ class Home extends PureComponent {
         />
         <TableComp
           handleOpenModal={this.handleOpenModal}
-          directories={directories}
+          directories={directories.directories}
         />
         <ModalComp
           currentDirInfo={this.state.currentDirInfo}
           handleCloseModal={this.handleCloseModal}
+          isOpen={this.state.modalIsOpen}
         />
       </HomeWrap>
     );
