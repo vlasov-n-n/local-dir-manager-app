@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 
-import {DirectoryButton, DirectoryInput, FieldTitle, FieldWrap} from './DirFieldStyleComp';
+import {DirectoryInput, FieldTitle} from './DirFieldStyleComp';
 import {newDirBtn, newDirTitle} from '../../constants/HomeCostants';
-import {SectionWrap} from '../Common/StyledComponents';
+import {ButtonComp, SectionWrap} from '../Common/CommonComponents';
 
 class FieldComp extends Component {
   static propTypes = {
@@ -47,7 +47,9 @@ class FieldComp extends Component {
 
   render() {
     return (
-      <SectionWrap>
+      <SectionWrap
+        alignItems={'center'}
+      >
         <FieldTitle>{newDirTitle}</FieldTitle>
         <DirectoryInput
           type="text"
@@ -56,11 +58,11 @@ class FieldComp extends Component {
           value={this.state.dirPath}
           error={this.state.error}
         />
-        <DirectoryButton
+        <ButtonComp
           onClick={() => this.handleCreateNewDir()}
         >
           {newDirBtn}
-        </DirectoryButton>
+        </ButtonComp>
       </SectionWrap>
     );
   }

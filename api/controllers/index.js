@@ -1,6 +1,5 @@
 import getAllDirs from '../helpers/getAllDirs';
-
-const isEmpty = require('../helpers/isEmpty');
+import isEmpty from '../helpers/isEmpty';
 
 /**
  * App cash

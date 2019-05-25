@@ -1,37 +1,18 @@
 import React from 'react';
-import * as PropTypes from 'prop-types';
 
+import {TableHeaderWrap, ColumnTitle} from '../Common/TableComponents';
 import {table} from '../../constants/HomeCostants';
-import {TableHeaderWrap, ColumnTitle} from './TableCompStyleComp';
 
 const TableHeader = () => {
   return (
     <TableHeaderWrap>
       <tr>
-        <ColumnTitle>
-          {table.data}
-        </ColumnTitle>
-        <ColumnTitle>
-          {table.baseDir}
-        </ColumnTitle>
-        <ColumnTitle>
-          {table.dirs}
-        </ColumnTitle>
-        <ColumnTitle>
-          {table.files}
-        </ColumnTitle>
-        <ColumnTitle>
-          {table.sumSize}
-        </ColumnTitle>
-        <ColumnTitle>
-          {/*empty*/}
-        </ColumnTitle>
+        {table.tableTitles.map(title =>
+          <ColumnTitle>{title}</ColumnTitle>
+        )}
       </tr>
     </TableHeaderWrap>
   )
-
 };
-
-TableHeader.propTypes = {};
 
 export default TableHeader;

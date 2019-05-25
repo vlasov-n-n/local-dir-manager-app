@@ -3,17 +3,20 @@ const newDirTitle = 'Новая директория';
 const newDirBtn = 'Добавить в список';
 const table = {
   title: 'Список директорий и файлов',
-  data: 'Дата',
-  baseDir: 'Базовая директория',
-  dirs: 'Директорий',
-  files: 'Файлов',
-  sumSize: 'Сумарный размер файлов',
-  filesBtn: 'Файлы'
+  filesBtn: 'Файлы',
+  tableTitles: [
+    'Дата',
+    'Базовая директория',
+    'Директорий',
+    'Файлов',
+    'Сумарный размер файлов',
+    ''
+  ],
 };
 const modal = {
   files: 'Файлы',
   size: 'Размер',
-  closeBtn : 'Закрыть'
+  closeBtn: 'Закрыть'
 };
 
 export {

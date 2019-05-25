@@ -1,4 +1,13 @@
 /**
+ * Dirs children
+ * @typedef DirsChild
+ * @type {Object}
+ * @property {string} name The item name,
+ * @property {string} type The item type,
+ * @property {number} size The item size
+ */
+
+/**
  * Directories list item
  * @typedef DirectoryItem
  * @type {Object}
@@ -7,14 +16,13 @@
  * @property {date} date The date create or change item,
  * @property {number} size The items size,
  * @property {string} path The items path,
- * @property {string} child
+ * @property {Array<DirsChild>} child
  */
 
 /**
  * Directories list
  * @typedef DirectoriesList
- * @type {Array}
- * @property {DirectoryItem} directories The list directories
+ * @type {Array.<DirectoryItem>} directories The list directories
  */
 
 /**

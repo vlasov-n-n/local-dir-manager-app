@@ -34,7 +34,7 @@ class Home extends PureComponent {
     super(props);
     this.state = {
       /** @type {boolean} */
-      modalIsOpen: true,
+      modalIsOpen: false,
       /** @type {DirectoryItem || null} */
       currentDirInfo: null
     }
@@ -53,7 +53,7 @@ class Home extends PureComponent {
    */
   handleOpenModal = (directory) => {
     this.setState({
-      modalIsOpen: false,
+      modalIsOpen: true,
       currentDirInfo: directory
     })
   };
@@ -77,22 +77,22 @@ class Home extends PureComponent {
     } = this.props;
 
     return (
-      <HomeWrap>
-        <Title>{homeTitle}</Title>
-        <FieldComp
-          defaultDirectoryPath={directories.defaultPath}
-          createDirAction={createDirAction}
-        />
-        <TableComp
-          handleOpenModal={this.handleOpenModal}
-          directories={directories.directories}
-        />
-        <ModalComp
-          currentDirInfo={this.state.currentDirInfo}
-          handleCloseModal={this.handleCloseModal}
-          isOpen={this.state.modalIsOpen}
-        />
-      </HomeWrap>
+        <HomeWrap>
+          <Title>{homeTitle}</Title>
+          <FieldComp
+            defaultDirectoryPath={directories.defaultPath}
+            createDirAction={createDirAction}
+          />
+          <TableComp
+            handleOpenModal={this.handleOpenModal}
+            directories={directories.directories}
+          />
+          <ModalComp
+            currentDirInfo={this.state.currentDirInfo}
+            handleCloseModal={this.handleCloseModal}
+            isOpen={this.state.modalIsOpen}
+          />
+        </HomeWrap>
     );
   }
 }

@@ -1,10 +1,25 @@
 import React from 'react';
 import * as PropTypes from 'prop-types';
 import moment from 'moment';
+import styled from 'styled-components';
 
 import {table} from '../../constants/HomeCostants';
-import {RowItem, TableRow} from './TableCompStyleComp';
+import {RowItem, TableRow} from '../Common/TableComponents';
 import fileSizeConverter from '../../helpers/fileSizeConverter';
+
+export const TableBtn = styled.button`
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  border-bottom-color: rgb(221, 221, 221);
+  background-color: rgb(221, 221, 221);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-weight: 400;
+  border-radius: 4px;
+  letter-spacing: 0.02857em;
+  outline:none;
+`;
 
 const TableRowComp = (props) => {
   const {
@@ -35,9 +50,9 @@ const TableRowComp = (props) => {
         {fileSizeConverter(directory.size)}
       </RowItem>
       <RowItem align={'center'}>
-        <button onClick={() => handleOpenModal(directory)}>
+        <TableBtn onClick={() => handleOpenModal(directory)}>
           {table.filesBtn}
-        </button>
+        </TableBtn>
       </RowItem>
     </TableRow>
   )

@@ -1,6 +1,20 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import {ModalWrap} from './ModalStyleComp';
+import moment from 'moment';
+
+import {
+  FileListItem,
+  Modal, ModalBackground,
+  ModalBtn,
+  ModalList,
+  ModalListItem,
+  ModalTitle,
+  ModalWrap
+} from './ModalStyleComp';
+import {modal} from '../../constants/HomeCostants';
+import {ButtonComp, Line} from '../Common/CommonComponents';
+import fileSizeConverter from '../../helpers/fileSizeConverter';
+import {filesSorter} from '../../helpers/sorter';
 
 class ModalComp extends Component {
   static propTypes = {
@@ -14,15 +28,66 @@ class ModalComp extends Component {
       path: PropTypes.string.isRequired,
       child: PropTypes.array
     }),
-    /** @type {boolean} */
-    isOpen: PropTypes.bool.isRequired
+    isOpen: PropTypes.bool.isRequired,
+    handleCloseModal: PropTypes.func.isRequired
   };
 
   render() {
-    return (
-      <ModalWrap isOpen={this.props.isOpen}>
-      </ModalWrap>
-    );
+    const {
+      /** @type {boolean} */
+      isOpen,
+      /** @type {DirectoryItem} */
+      currentDirInfo,
+      /** @type {function} */
+      handleCloseModal
+    } = this.props;
+
+    const isDir = '<DIR>';
+
+    if (isOpen) {
+      return (
+        <ModalWrap>
+          <ModalBackground/>
+          <Modal>
+            <ModalTitle>
+              {currentDirInfo.path} {moment(currentDirInfo.date).format('DD:MM:YYYY hh:mm')}
+            </ModalTitle>
+            <Line/>
+            <ModalList>
+              <ModalListItem>
+                <FileListItem
+                  width={'60%'}
+                  border>
+                  {modal.files}
+                </FileListItem>
+                <FileListItem>
+                  {modal.size}
+                </FileListItem>
+              </ModalListItem>
+              {filesSorter(currentDirInfo.child).map((child, index) => (
+                <ModalListItem key={child.name + index}>
+                  <FileListItem
+                    width={'60%'}
+                    border
+                  >
+                    {child.name}
+                  </FileListItem>
+                  <FileListItem>
+                    {child.type === 'FILE' ? fileSizeConverter(child.size) : isDir}
+                  </FileListItem>
+                </ModalListItem>
+              ))}
+            </ModalList>
+            <Line/>
+            <ModalBtn>
+              <ButtonComp onClick={() => handleCloseModal()}>
+                {modal.closeBtn}
+              </ButtonComp>
+            </ModalBtn>
+          </Modal>
+        </ModalWrap>
+      );
+    } else return null
   }
 }
 
