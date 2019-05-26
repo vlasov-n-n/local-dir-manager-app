@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import {DirectoryInput, FieldTitle} from './DirFieldStyleComp';
 import {newDirBtn, newDirTitle} from '../../constants/HomeCostants';
 import {ButtonComp, SectionWrap} from '../Common/CommonComponents';
-import {Doughnut} from 'react-chartjs-2';
 
 class FieldComp extends Component {
   static propTypes = {

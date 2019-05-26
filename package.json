@@ -4,13 +4,16 @@
   "description": "Client-server application for local directory management",
   "main": "api/index.js",
   "scripts": {
-    "prestart": "npm run -s build",
-    "client-install": "npm install --prefix client",
-    "start": "node dist",
-    "build": "babel src -s -D -d dist --presets es2015,stage-0",
+    "start:server": "node dist",
+    "start:client": "npm start --prefix client",
+    "install": "npm-run-all --parallel install:*",
+    "install:client": "npm install --prefix client",
+    "install:server": "npm install",
+    "build:server": "babel src -s -D -d dist --presets es2015,stage-0",
     "dev": "npm-run-all --parallel dev:*",
     "dev:server": "nodemon -w api --exec \"babel-node api --presets es2015,stage-0\"",
-    "dev:client": "npm start --prefix client"
+    "dev:client": "npm start --prefix client",
+    "test:client": "npm run test --prefix client"
   },
   "author": "",
   "license": "ISC",

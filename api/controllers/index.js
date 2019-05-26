@@ -36,7 +36,7 @@ const getAllDirController = () => {
   if(isEmpty(cash)) {
     const allDirectoryItems = getAllDirs();
     const directoriesList = getDirectoriesList(allDirectoryItems);
-    const filesStatistic = getFilesStat(allDirectoryItems, 'extend');
+    const filesStatistic = getFilesStat(allDirectoryItems);
 
     const directories = {
       defaultPath: defaultDirPath,

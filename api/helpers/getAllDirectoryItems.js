@@ -67,7 +67,7 @@ function index() {
     currentDir.forEach(item => {
       if (item.type === 'DIR') {
         getAllDir(item.path)
-      } else return allDirectoryItems;
+      }
     })
   };
 

@@ -20,6 +20,13 @@
  */
 
 /**
+ * @typedef StatItem
+ * @type {Object}
+ * @property {string} type
+ * @property {string} size
+ */
+
+/**
  * Directories list
  * @typedef DirectoriesList
  * @type {Array.<DirectoryItem>} directories The list directories

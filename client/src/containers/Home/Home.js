@@ -7,8 +7,8 @@ import {HomeWrap, Title} from './HomeStyleComp';
 import FieldComp from '../../components/FieldComp';
 import TableComp from '../../components/TableComp';
 import ModalComp from '../../components/ModalComp';
-import Diagram from '../../components/Diagram';
 import {homeTitle} from '../../constants/HomeCostants';
+import Diagram from '../../components/Diagram';
 
 class Home extends PureComponent {
   static propTypes = {
@@ -83,12 +83,15 @@ class Home extends PureComponent {
           <FieldComp
             defaultDirectoryPath={directories.defaultPath}
             createDirAction={createDirAction}
+            filesStatistic={directories.filesStatistic}
+          />
+          <Diagram
+            filesStatistic={directories.filesStatistic}
           />
           <TableComp
             handleOpenModal={this.handleOpenModal}
             directories={directories.directories}
           />
-          <Diagram/>
           <ModalComp
             currentDirInfo={this.state.currentDirInfo}
             handleCloseModal={this.handleCloseModal}

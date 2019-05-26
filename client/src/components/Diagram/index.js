@@ -1,36 +1,49 @@
 import React, {Component} from 'react';
+import * as PropTypes from 'prop-types';
 import {Doughnut} from 'react-chartjs-2';
-import {SectionWrap} from '../Common/CommonComponents';
+
+import getRandomColor from '../../helpers/getRandomColor';
+import {diagramTitle} from '../../constants/HomeCostants';
+import {DiagramWrap} from './DiagramStyledComp';
 
 class Diagram extends Component {
+  static propTypes = {
+    filesStatistic: PropTypes.array
+  };
+
   render() {
+    const {
+      /** @type {Array<StatItem>} */
+      filesStatistic
+    } = this.props;
+
+    const labels = filesStatistic ? filesStatistic.map(i => i.type) : [];
+    const filesData = filesStatistic ? filesStatistic.map(i => i.size) : [];
+    const colors = filesStatistic ? getRandomColor(filesStatistic.length) : ['#FF6384'];
+
     const data = {
-      labels: [
-        'Red',
-        'Green',
-        'Yellow'
-      ],
+      labels: labels,
       datasets: [{
-        data: [300, 50, 100],
-        backgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-        ],
-        hoverBackgroundColor: [
-          '#FF6384',
-          '#36A2EB',
-          '#FFCE56'
-        ]
+        data: filesData,
+        backgroundColor: colors
       }]
     };
 
+    const options={
+      legend: {
+        display: true,
+        position: 'left'
+      }
+    };
+
     return (
-      <SectionWrap>
-          <Doughnut data={data} />
-      </SectionWrap>
+      <DiagramWrap>
+        <Doughnut
+          options={options}
+          data={data}/>
+      </DiagramWrap>
     );
   }
 }
 
-export default Diagram
+export default Diagram;
