@@ -1,5 +1,8 @@
-import getAllDirs from '../helpers/getAllDirs';
+import getAllDirs from '../helpers/getAllDirectoryItems';
 import isEmpty from '../helpers/isEmpty';
+import getFilesStat from '../helpers/getFilesStat';
+import getDirectoriesList from '../helpers/getDirectoriesList';
+import {defaultDirPath} from '../../config/env';
 
 /**
  * App cash
@@ -25,15 +28,25 @@ const getCash = () => {
 };
 
 /**
- * Get all directories list
+ * Get directories
  * @returns {Directories}
  */
 const getAllDirController = () => {
   const cash = getCash();
   if(isEmpty(cash)) {
-    const allDir = getAllDirs();
-    setCash(allDir);
-    return allDir
+    const allDirectoryItems = getAllDirs();
+    const directoriesList = getDirectoriesList(allDirectoryItems);
+    const filesStatistic = getFilesStat(allDirectoryItems, 'extend');
+
+    const directories = {
+      defaultPath: defaultDirPath,
+      directories: directoriesList,
+      filesStatistic: filesStatistic
+    };
+
+    setCash(directories);
+
+    return directories
   } else {
     return getCash();
   }
@@ -47,7 +60,7 @@ const getAllDirController = () => {
  */
 //TODO Need make logic for create new directory
 const createNewDirController = (newDirName) => {
-  return getAllDirs()
+  return getCash();
 };
 
 export {

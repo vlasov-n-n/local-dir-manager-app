@@ -7,6 +7,7 @@ import {HomeWrap, Title} from './HomeStyleComp';
 import FieldComp from '../../components/FieldComp';
 import TableComp from '../../components/TableComp';
 import ModalComp from '../../components/ModalComp';
+import Diagram from '../../components/Diagram';
 import {homeTitle} from '../../constants/HomeCostants';
 
 class Home extends PureComponent {
@@ -87,6 +88,7 @@ class Home extends PureComponent {
             handleOpenModal={this.handleOpenModal}
             directories={directories.directories}
           />
+          <Diagram/>
           <ModalComp
             currentDirInfo={this.state.currentDirInfo}
             handleCloseModal={this.handleCloseModal}

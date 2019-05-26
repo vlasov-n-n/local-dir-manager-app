@@ -31,4 +31,5 @@
  * @type {Object}
  * @property {string} defaultPath The default directory location,
  * @property {DirectoriesList} directories The list directories
+ * @property {Object} filesStatistic The files statistic
  */

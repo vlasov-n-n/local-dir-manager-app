@@ -7,8 +7,8 @@ const TableHeader = () => {
   return (
     <TableHeaderWrap>
       <tr>
-        {table.tableTitles.map(title =>
-          <ColumnTitle>{title}</ColumnTitle>
+        {table.tableTitles.map((title, index) =>
+          <ColumnTitle key={index}>{title}</ColumnTitle>
         )}
       </tr>
     </TableHeaderWrap>

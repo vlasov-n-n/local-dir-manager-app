@@ -7,8 +7,15 @@ const router = express.Router();
 // @desc Get all directories
 // @access Pubic
 router.get('/', (req, res) => {
-  const allDirectories = getAllDirController();
-  res.json(allDirectories)
+  try {
+    const allDirectories = getAllDirController();
+    res.statusCode = 200;
+    res.json(allDirectories)
+  } catch (e) {
+    res.statusCode = 500;
+    res.json({error: 'Что-то пошло не так ¯\\_(ツ)_/¯'})
+  }
+
 });
 
 // @route POST api/dir
