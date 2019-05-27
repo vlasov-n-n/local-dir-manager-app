@@ -20,6 +20,6 @@ $ npm run tests:client
 ```
 Runs client tests.<br>
 
-###TODO
+## TODO
 - [ ] CRUD Operation from client and server side.
 - [ ] Refactoring function _getAllDirectoryItems_
