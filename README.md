@@ -19,3 +19,7 @@ Run tests:
 $ npm run tests:client
 ```
 Runs client tests.<br>
+
+###TODO
+- [ ] CRUD Operation from client and server side.
+- [ ] Refactoring function _getAllDirectoryItems_
