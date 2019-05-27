@@ -4,6 +4,7 @@ import {Doughnut} from 'react-chartjs-2';
 
 import getRandomColor from '../../helpers/getRandomColor';
 import {DiagramWrap} from './DiagramStyledComp';
+import fileSizeConverter from '../../helpers/fileSizeConverter';
 
 class Diagram extends Component {
   static propTypes = {
@@ -32,6 +33,21 @@ class Diagram extends Component {
       legend: {
         display: true,
         position: 'left'
+      },
+      tooltips: {
+        callbacks: {
+          label: function(tooltipItem, data) {
+            let dataset = data.datasets[tooltipItem.datasetIndex];
+            let meta = dataset._meta[Object.keys(dataset._meta)[0]];
+            let total = meta.total;
+            let currentValue = dataset.data[tooltipItem.index];
+            let percentage = parseFloat((currentValue/total*100).toFixed(1));
+            return fileSizeConverter(currentValue) + ' (' + percentage + '%)';
+          },
+          title: function(tooltipItem, data) {
+            return data.labels[tooltipItem[0].index];
+          }
+        }
       }
     };
 
