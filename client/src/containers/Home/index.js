@@ -17,7 +17,7 @@ class Index extends PureComponent {
     /** @type {function} Create new directory */
     createDirAction: PropTypes.func.isRequired,
     /** @type {function} Open modal window */
-    openModalAction: PropTypes.func.isRequired,
+    openModal: PropTypes.func.isRequired,
     /** @type {Directories} */
     directories: PropTypes.shape({
       defaultPath: PropTypes.string.isRequired,

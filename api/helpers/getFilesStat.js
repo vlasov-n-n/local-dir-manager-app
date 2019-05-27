@@ -9,7 +9,9 @@ export default (array) => {
    * Array group by type
    * @type {Array}
    */
-  const result = array.reduce(function(groups, item) {
+  const result = array
+    .filter(item => item.type !== 'DIR')
+    .reduce(function(groups, item) {
     const val = item['extend'];
     groups[val] = groups[val] || [];
     groups[val].push(item);
