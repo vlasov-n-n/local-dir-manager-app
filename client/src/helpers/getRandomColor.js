@@ -10,7 +10,7 @@ export default (colorCount) => {
    * @param {number} iteration
    * @param {Array} arr
    */
-  const arrPush = (colorCount, iteration, arr) => {
+  const colorPush = (colorCount, iteration, arr) => {
     const letters = '0123456789ABCDEF';
     let color = '#';
 
@@ -23,9 +23,9 @@ export default (colorCount) => {
     if(iteration === colorCount) {
       return newArr
     } else {
-      return arrPush(colorCount, iteration += 1, newArr)
+      return colorPush(colorCount, iteration += 1, newArr)
     }
   };
-  
-  return arrPush(colorCount, 1, []);
+
+  return colorPush(colorCount, 1, []);
 }
