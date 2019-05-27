@@ -14,7 +14,7 @@ export const initState = {
   isLoading: false,
   loadingError: null,
   directories: {
-    defaultPath: '/',
+    defaultPath: './opt',
     directories: []
   },
 };

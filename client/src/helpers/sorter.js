@@ -6,7 +6,7 @@
  *   resultInt: Array<number>
  * }} sortItem
  */
-const getStringForSort = (sortItem) => {
+const getDataForSorts = (sortItem) => {
   const regexpString = sortItem
     .replace(/\.[^/.]+$/, '')
     .match(/[A-Za-z]/g);
@@ -42,8 +42,8 @@ const fieldSorter = (fields) => (a, b) => fields.map(o => {
 
   switch (o) {
     case 'name':
-      const parseFirst = getStringForSort(a[o]);
-      const parseSecond = getStringForSort(b[o]);
+      const parseFirst = getDataForSorts(a[o]);
+      const parseSecond = getDataForSorts(b[o]);
       const maxIntLength = parseFirst.resultInt.length > parseSecond.resultInt.length
         ? parseFirst.resultInt.length
         : parseSecond.resultInt.length;

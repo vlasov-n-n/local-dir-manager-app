@@ -3,7 +3,6 @@ import * as PropTypes from 'prop-types';
 import {Doughnut} from 'react-chartjs-2';
 
 import getRandomColor from '../../helpers/getRandomColor';
-import {diagramTitle} from '../../constants/HomeCostants';
 import {DiagramWrap} from './DiagramStyledComp';
 
 class Diagram extends Component {

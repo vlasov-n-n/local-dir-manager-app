@@ -16,8 +16,6 @@ class FieldComp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      /** @type {string} This value directory location for create*/
-      dirPath: this.props.defaultDirectoryPath,
       /** @type {boolean} This checking empty value*/
       isEmpty: false
     };
@@ -55,7 +53,7 @@ class FieldComp extends Component {
           type="text"
           name="dirPath"
           onChange={(e) => this.handleChangeInput(e)}
-          value={this.state.dirPath}
+          value={this.props.defaultDirectoryPath}
           error={this.state.error}
         />
         <ButtonComp
