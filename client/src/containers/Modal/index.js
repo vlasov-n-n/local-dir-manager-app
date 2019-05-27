@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
+import {connect} from 'react-redux';
 
 import {
   FileListItem,
@@ -12,11 +13,12 @@ import {
   ModalWrap
 } from './ModalStyleComp';
 import {modal} from '../../constants/HomeCostants';
-import {ButtonComp, Line} from '../Common/CommonComponents';
+import {ButtonComp, Line} from '../../components/Common/CommonComponents';
 import fileSizeConverter from '../../helpers/fileSizeConverter';
 import {filesSorter} from '../../helpers/sorter';
+import {closeModalAction} from '../../ducks/ModalDuck';
 
-class ModalComp extends Component {
+class Index extends Component {
   static propTypes = {
     /** @type {DirectoryItem} */
     currentDirInfo: PropTypes.shape({
@@ -91,4 +93,17 @@ class ModalComp extends Component {
   }
 }
 
-export default ModalComp;
+const mapStateToProps = state => {
+  return {
+    isOpen: state.modal.modalIsOpen,
+    currentDirInfo: state.modal.currentDirInfo
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleCloseModal: () => dispatch(closeModalAction())
+  }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Index);

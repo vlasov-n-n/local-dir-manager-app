@@ -3,19 +3,21 @@ import * as PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {getAllDirAction, createDirAction} from '../../ducks/HomeDuck';
+import {openModalAction} from '../../ducks/ModalDuck';
 import {HomeWrap, Title} from './HomeStyleComp';
 import FieldComp from '../../components/FieldComp';
 import TableComp from '../../components/TableComp';
-import ModalComp from '../../components/ModalComp';
 import {homeTitle} from '../../constants/HomeCostants';
 import Diagram from '../../components/Diagram';
 
-class Home extends PureComponent {
+class Index extends PureComponent {
   static propTypes = {
     /** @type {function} Get all directory */
     getAllDirAction: PropTypes.func.isRequired,
     /** @type {function} Create new directory */
     createDirAction: PropTypes.func.isRequired,
+    /** @type {function} Open modal window */
+    openModalAction: PropTypes.func.isRequired,
     /** @type {Directories} */
     directories: PropTypes.shape({
       defaultPath: PropTypes.string.isRequired,
@@ -31,16 +33,6 @@ class Home extends PureComponent {
     })
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      /** @type {boolean} */
-      modalIsOpen: false,
-      /** @type {DirectoryItem || null} */
-      currentDirInfo: null
-    }
-  }
-
   /**
    * Get directories list for init application
    */
@@ -48,33 +40,14 @@ class Home extends PureComponent {
     this.props.getAllDirAction();
   }
 
-  /**
-   * Open modal with current directory information
-   * @param {DirectoryItem} directory
-   */
-  handleOpenModal = (directory) => {
-    this.setState({
-      modalIsOpen: true,
-      currentDirInfo: directory
-    })
-  };
-
-  /**
-   * Closing the modal and clear the state field currentDirInfo
-   */
-  handleCloseModal = () => {
-    this.setState({
-      modalIsOpen: false,
-      currentDirInfo: null
-    })
-  };
-
   render() {
     const {
       /** @type {Directories} */
       directories,
       /** @type {function} */
-      createDirAction
+      createDirAction,
+      /** @type {function} */
+      openModal
     } = this.props;
 
     return (
@@ -89,13 +62,8 @@ class Home extends PureComponent {
             filesStatistic={directories.filesStatistic}
           />
           <TableComp
-            handleOpenModal={this.handleOpenModal}
+            handleOpenModal={openModal}
             directories={directories.directories}
-          />
-          <ModalComp
-            currentDirInfo={this.state.currentDirInfo}
-            handleCloseModal={this.handleCloseModal}
-            isOpen={this.state.modalIsOpen}
           />
         </HomeWrap>
     );
@@ -111,8 +79,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getAllDirAction: () => dispatch(getAllDirAction()),
-    createDirAction: (newDirName) => dispatch(createDirAction(newDirName))
+    createDirAction: (newDirName) => dispatch(createDirAction(newDirName)),
+    openModal: (info) => dispatch(openModalAction(info))
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Index);
