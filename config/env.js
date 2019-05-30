@@ -1,7 +1,9 @@
 const defaultPort = '5000';
-const defaultDir = './opt';
+const defaultDirPath = './opt';
+const fileColorsPath = './config/fileColors.json';
 
 module.exports = {
   defaultPort,
-  defaultDirPath: defaultDir
+  defaultDirPath,
+  fileColorsPath
 };

@@ -24,6 +24,7 @@
  * @type {Object}
  * @property {string} type
  * @property {string} size
+ * @property {string} colorType
  */
 
 /**

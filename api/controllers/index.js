@@ -5,26 +5,26 @@ import getDirectoriesList from '../helpers/getDirectoriesList';
 import {defaultDirPath} from '../../config/env';
 
 /**
- * App cash
- * @type {Directories}
+ * App cache
+ * @type {Object}
  */
-const cash = {};
+const cache = {};
 
 /**
- * Set dir list to cash
+ * Set dir list to cache
  * @param {Directories} dirList
  * @returns {*}
  */
-const setCash = (dirList) => {
-  return Object.assign(cash, dirList)
+const setCache = (dirList) => {
+  return Object.assign(cache, dirList)
 };
 
 /**
- * Get dir list from cash
- * @returns {Directories}
+ * Get dir list from cache
+ * @returns {Object}
  */
-const getCash = () => {
-  return cash
+const getCache = () => {
+  return cache
 };
 
 /**
@@ -32,7 +32,7 @@ const getCash = () => {
  * @returns {Directories}
  */
 const getAllDirController = () => {
-  const cash = getCash();
+  const cash = getCache();
   if(isEmpty(cash)) {
     const allDirectoryItems = getAllDirs();
     const directoriesList = getDirectoriesList(allDirectoryItems);
@@ -44,11 +44,11 @@ const getAllDirController = () => {
       filesStatistic: filesStatistic
     };
 
-    setCash(directories);
+    setCache(directories);
 
     return directories
   } else {
-    return getCash();
+    return getCache();
   }
 };
 
@@ -60,7 +60,19 @@ const getAllDirController = () => {
  */
 //TODO Need make logic for create new directory
 const createNewDirController = (newDirName) => {
-  return getCash();
+  const allDirectoryItems = getAllDirs();
+  const directoriesList = getDirectoriesList(allDirectoryItems);
+  const filesStatistic = getFilesStat(allDirectoryItems);
+
+  const directories = {
+    defaultPath: defaultDirPath,
+    directories: directoriesList,
+    filesStatistic: filesStatistic
+  };
+
+  setCache(directories);
+
+  return directories;
 };
 
 export {

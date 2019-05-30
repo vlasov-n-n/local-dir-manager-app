@@ -19,7 +19,12 @@ class Diagram extends Component {
 
     const labels = filesStatistic ? filesStatistic.map(i => i.type) : [];
     const filesData = filesStatistic ? filesStatistic.map(i => i.size) : [];
-    const colors = filesStatistic ? getRandomColor(filesStatistic.length) : ['#FF6384'];
+    const colors = filesStatistic ?
+      filesStatistic.map(
+        i => i.colorType
+          ? i.colorType
+          : getRandomColor(1)[0]) //if colorType null or undefined get random color
+      : ['#7c7c7c'];
 
     const data = {
       labels: labels,

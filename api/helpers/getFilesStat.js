@@ -1,8 +1,12 @@
+import {getAllFileColors, setNewFileColor} from './fileTypeColors';
+import getRandomColor from './getRandomColor';
+
 /**
  * @param {Array} array
  * @return {Array<StatItem>}
  */
 export default (array) => {
+  const fileColors = getAllFileColors();
   const filesStatistic = [];
 
   /**
@@ -23,12 +27,19 @@ export default (array) => {
    */
   for (let key in result) {
     let totalSize = 0;
+    const colorType = fileColors[key] ? fileColors[key] : getRandomColor(1)[0];
+    fileColors[key] = colorType;
+
     result[key].forEach(item => totalSize += item.size);
+
     filesStatistic.push({
       type: key,
-      size: totalSize
+      size: totalSize,
+      colorType: colorType
     })
   }
+
+  setNewFileColor(fileColors);
 
   return filesStatistic
 };
