@@ -8,7 +8,6 @@
     "start:client": "npm start --prefix client",
     "install": "npm-run-all --parallel install:*",
     "install:client": "npm install --prefix client",
-    "install:server": "npm install",
     "build:server": "babel src -s -D -d dist --presets es2015,stage-0",
     "dev": "npm-run-all --parallel dev:*",
     "dev:server": "nodemon -w api --exec \"babel-node api --presets es2015,stage-0\"",

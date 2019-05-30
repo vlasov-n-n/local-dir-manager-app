@@ -6,7 +6,6 @@ in the project directory, you can run:
 Development:
 ```sh
 $ npm install
-$ npm run client-install
 $ npm run dev
 ```
 Runs the app in the development mode.<br>
