@@ -1,10 +1,9 @@
-import fs from 'fs';
-
 import getAllDirs from '../helpers/getAllDirectoryItems';
 import isEmpty from '../helpers/isEmpty';
 import getFilesStat from '../helpers/getFilesStat';
 import getDirectoriesList from '../helpers/getDirectoriesList';
 import {defaultDirPath} from '../../config/env';
+import createNewDirectory from '../helpers/createNewDirectory';
 
 /**
  * App cache
@@ -71,7 +70,7 @@ const getAllDirController = () => {
  * @constructor
  */
 const createNewDirController = (newDirPath) => {
-  fs.mkdirSync(newDirPath);
+  createNewDirectory(newDirPath);
 
   const allDirectoryItems = getAllDirs();
   const directoriesList = getDirectoriesList(allDirectoryItems);

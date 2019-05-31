@@ -41,7 +41,7 @@ class FieldComp extends Component {
    */
   handleCreateNewDir = () => {
     const {dirPath} = this.state;
-    this.props.createDirAction(dirPath)
+    this.props.createDirAction(dirPath.replace('./opt/',''))
   };
 
   /**

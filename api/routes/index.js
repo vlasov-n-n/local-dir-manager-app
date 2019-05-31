@@ -27,14 +27,8 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   const newDirName = req.body.newDirName;
 
-  /** Validate default path */
-  if(newDirName.search(/^\.\/opt\//)) {
-    res.statusCode = 500;
-    return res.json({error: 'path_error'})
-  }
-
   try {
-    const isExist = fs.existsSync(newDirName);
+    const isExist = fs.existsSync(defaultDirPath+'/'+newDirName);
     if (isExist) {
       res.statusCode = 500;
       res.json({error: 'path_exist_error'})
