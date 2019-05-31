@@ -1,3 +1,5 @@
+import fs from 'fs';
+
 import getAllDirs from '../helpers/getAllDirectoryItems';
 import isEmpty from '../helpers/isEmpty';
 import getFilesStat from '../helpers/getFilesStat';
@@ -32,34 +34,45 @@ const getCache = () => {
  * @returns {Directories}
  */
 const getAllDirController = () => {
-  const cash = getCache();
-  if(isEmpty(cash)) {
-    const allDirectoryItems = getAllDirs();
-    const directoriesList = getDirectoriesList(allDirectoryItems);
-    const filesStatistic = getFilesStat(allDirectoryItems);
+  // const cash = getCache();
+  // if(isEmpty(cash)) {
+  //   const allDirectoryItems = getAllDirs();
+  //   const directoriesList = getDirectoriesList(allDirectoryItems);
+  //   const filesStatistic = getFilesStat(allDirectoryItems);
+  //
+  //   const directories = {
+  //     defaultPath: defaultDirPath,
+  //     directories: directoriesList,
+  //     filesStatistic: filesStatistic
+  //   };
+  //
+  //   setCache(directories);
+  //
+  //   return directories
+  // } else {
+  //   return getCache();
+  // }
 
-    const directories = {
-      defaultPath: defaultDirPath,
-      directories: directoriesList,
-      filesStatistic: filesStatistic
-    };
+  const allDirectoryItems = getAllDirs();
+  const directoriesList = getDirectoriesList(allDirectoryItems);
+  const filesStatistic = getFilesStat(allDirectoryItems);
 
-    setCache(directories);
-
-    return directories
-  } else {
-    return getCache();
-  }
+  return {
+    defaultPath: defaultDirPath,
+    directories: directoriesList,
+    filesStatistic: filesStatistic
+  };
 };
 
 /**
  * Create new directory
- * @param {string} newDirName
+ * @param {string} newDirPath
  * @returns {Directories} Directories list
  * @constructor
  */
-//TODO Need make logic for create new directory
-const createNewDirController = (newDirName) => {
+const createNewDirController = (newDirPath) => {
+  fs.mkdirSync(newDirPath);
+
   const allDirectoryItems = getAllDirs();
   const directoriesList = getDirectoriesList(allDirectoryItems);
   const filesStatistic = getFilesStat(allDirectoryItems);

@@ -1,4 +1,4 @@
-import {getAllFileColors, setNewFileColor} from './fileTypeColors';
+import {getAllFileColors, setNewFileColors} from './fileTypeColors';
 import getRandomColor from './getRandomColor';
 
 /**
@@ -39,7 +39,7 @@ export default (array) => {
     })
   }
 
-  setNewFileColor(fileColors);
+  setNewFileColors(fileColors);
 
   return filesStatistic
 };

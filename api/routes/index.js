@@ -1,4 +1,7 @@
 import express from 'express';
+import fs from 'fs';
+
+import {defaultDirPath} from '../../config/env';
 import {getAllDirController, createNewDirController} from '../controllers';
 
 const router = express.Router();
@@ -13,7 +16,7 @@ router.get('/', (req, res) => {
     res.json(allDirectories)
   } catch (e) {
     res.statusCode = 500;
-    res.json({error: 'Что-то пошло не так ¯\\_(ツ)_/¯'})
+    res.json({error: 'get_error'})
   }
 
 });
@@ -23,8 +26,28 @@ router.get('/', (req, res) => {
 // @access Pubic
 router.post('/', (req, res) => {
   const newDirName = req.body.newDirName;
-  const allDirectories = createNewDirController(newDirName);
-  res.json(allDirectories)
+
+  /** Validate default path */
+  if(newDirName.search(/^\.\/opt\//)) {
+    res.statusCode = 500;
+    return res.json({error: 'path_error'})
+  }
+
+  try {
+    const isExist = fs.existsSync(newDirName);
+    if (isExist) {
+      res.statusCode = 500;
+      res.json({error: 'path_exist_error'})
+    } else {
+      const allDirectories = createNewDirController(newDirName);
+      res.statusCode = 200;
+      return res.json(allDirectories)
+    }
+  } catch (e) {
+    res.statusCode = 500;
+    return res.json({error: 'create_error'})
+  }
+
 });
 
 module.exports = router;

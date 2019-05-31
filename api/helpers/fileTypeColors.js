@@ -2,7 +2,7 @@ import fs from 'fs';
 import {fileColorsPath} from '../../config/env';
 
 /**
- * Get color for file type
+ * Get colors for file type
  * @return {Array<Object>} fileColor
  */
 export const getAllFileColors = () => {
@@ -15,10 +15,10 @@ export const getAllFileColors = () => {
 };
 
 /**
- * Write colors from config
+ * Write colors to config file
  * @param newData
  */
-export const setNewFileColor = (newData) => {
+export const setNewFileColors = (newData) => {
   try {
     fs.writeFileSync(fileColorsPath, JSON.stringify(newData));
   } catch (e) {

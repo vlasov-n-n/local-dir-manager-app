@@ -18,6 +18,8 @@ class Index extends PureComponent {
     createDirAction: PropTypes.func.isRequired,
     /** @type {function} Open modal window */
     openModal: PropTypes.func.isRequired,
+    /** @type {string | null} */
+    createDirError: PropTypes.string,
     /** @type {Directories} */
     directories: PropTypes.shape({
       defaultPath: PropTypes.string.isRequired,
@@ -47,7 +49,9 @@ class Index extends PureComponent {
       /** @type {function} */
       createDirAction,
       /** @type {function} */
-      openModal
+      openModal,
+      /** @type {string | null} */
+      createDirError
     } = this.props;
 
     return (
@@ -56,6 +60,7 @@ class Index extends PureComponent {
           <FieldComp
             defaultDirectoryPath={directories.defaultPath}
             createDirAction={createDirAction}
+            createDirError={createDirError}
             filesStatistic={directories.filesStatistic}
           />
           <Diagram
@@ -72,7 +77,8 @@ class Index extends PureComponent {
 
 const mapStateToProps = state => {
   return {
-    directories: state.home.directories
+    directories: state.home.directories,
+    createDirError: state.home.createDirError
   }
 };
 

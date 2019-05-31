@@ -6,15 +6,17 @@ import {createNewDirReq, getAllDirReq} from '../api';
  * @typedef InitState
  * @type {{
  *  isLoading: boolean,
- *  loadingError: null || string,
- *  directories: Directories
+ *  loadingError: null | string,
+ *  directories: Directories,
+ *  error: null | String:
  * }}
  */
 export const initState = {
   isLoading: false,
   loadingError: null,
+  createDirError: null,
   directories: {
-    defaultPath: './opt',
+    defaultPath: './opt/',
     directories: []
   },
 };
@@ -47,21 +49,29 @@ export default function reducer(state = initState, action) {
       return {
         ...state,
         isLoading: true,
-        error: null
+        loadingError: null,
+        createDirError: null
       };
     case GET_ALL_DIR_ERROR:
+      return {
+        ...state,
+        isLoading: false,
+        loadingError: payload.error
+      };
     case CREATE_DIR_ERROR:
       return {
         ...state,
         isLoading: false,
-        error: payload.error
+        createDirError: payload.error
       };
     case GET_ALL_DIR_SUCCESS:
     case CREATE_DIR_SUCCESS:
       return {
         ...state,
         isLoading: false,
-        directories: payload.directories
+        directories: payload.directories,
+        loadingError: null,
+        createDirError: null
       };
 
     default:
@@ -102,7 +112,7 @@ export const getAllDirSaga = function* () {
       type: GET_ALL_DIR_SUCCESS, payload: {directories}
     })
   } catch (e) {
-    yield put({type: GET_ALL_DIR_ERROR});
+    yield put({type: GET_ALL_DIR_ERROR, payload:{error: e.response.data.error}});
   }
 };
 
@@ -118,7 +128,7 @@ export const createDirSaga = function* ({payload}) {
       type: CREATE_DIR_SUCCESS, payload: {directories}
     })
   } catch (e) {
-    yield put({type: CREATE_DIR_ERROR});
+    yield put({type: CREATE_DIR_ERROR, payload: {error:e.response.data.error}});
   }
 };
 

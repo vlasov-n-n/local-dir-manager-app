@@ -21,7 +21,7 @@ const getAllDirReq = () => {
  * @param newDirName
  */
 const createNewDirReq = (newDirName) => {
-  return axiosInstance.post(dir, {newDirName}).then((res) => res.data)
+  return axiosInstance.post(dir, {newDirName}).then((res) => res.data).catch()
 };
 
 export {

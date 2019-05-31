@@ -18,11 +18,16 @@ const modal = {
   size: 'Размер',
   closeBtn: 'Закрыть'
 };
-
+const errors = {
+  path_exist_error: "такая директория уже существует",
+  create_error: "не удалось создать директорию",
+  get_error: "не удалось получить директорию"
+};
 export {
   homeTitle,
   newDirTitle,
   newDirBtn,
   table,
-  modal
+  modal,
+  errors
 }
