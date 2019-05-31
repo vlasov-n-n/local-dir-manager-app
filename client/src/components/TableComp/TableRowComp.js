@@ -35,7 +35,7 @@ const TableRowComp = (props) => {
   return (
     <TableRow>
       <RowItem>
-        {moment(directory.date).format('DD:MM:YYYY hh:mm')}
+        {moment(directory.date).format('DD:MM:YYYY HH:MM')}
       </RowItem>
       <RowItem>
         {directory.path}
