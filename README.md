@@ -19,5 +19,43 @@ $ npm run tests:client
 ```
 Runs client tests.<br>
 
+## Project structure:
+```sh
+├─ api
+│ ├─ controllers
+│ │ └─ ...
+│ ├─ helpers
+│ │ └─ ...
+│ ├─ routes
+│ │ └─ ...
+│ └─ index.js
+├─ client
+│ ├─ public
+│ │ └─ ...
+│ ├─ src
+│ │ │ ├─ api
+│ │ │ │ └─ ...
+│ │ │ ├─ components
+│ │ │ │ └─ ...
+│ │ │ ├─ constants
+│ │ │ │ └─ ...
+│ │ │ ├─ containers
+│ │ │ │ └─ ...
+│ │ │ ├─ ducks
+│ │ │ │ └─ ...
+│ │ │ ├─ helpers
+│ │ │ │ └─ ...
+│ │ │ ├─ redux
+│ │ │ │ └─ ...
+│ │ │ └─ index.js
+│ └─ package.json
+├─ config
+│ ├─ entities.js
+│ ├─ env.js
+│ ├─ colors.json
+├─ opt
+└─ └─ ...
+```
+
 ## TODO
 - [ ] Refactoring function _getAllDirectoryItems_
