@@ -59,3 +59,4 @@ Runs client tests.<br>
 
 ## TODO
 - [ ] Refactoring function _getAllDirectoryItems_
+- [ ] Logger for API
