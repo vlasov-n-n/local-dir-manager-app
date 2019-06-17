@@ -12,13 +12,13 @@ import Diagram from '../../components/Diagram';
 
 class Index extends PureComponent {
   static propTypes = {
-    /** @type {function} Get all directory */
+    /** Action for fet all directory */
     getAllDirAction: PropTypes.func.isRequired,
-    /** @type {function} Create new directory */
+    /** Create new directory */
     createDirAction: PropTypes.func.isRequired,
-    /** @type {function} Open modal window */
+    /** Open modal window */
     openModal: PropTypes.func.isRequired,
-    /** @type {string | null} */
+    /** Create dir error */
     createDirError: PropTypes.string,
     /** @type {Directories} */
     directories: PropTypes.shape({

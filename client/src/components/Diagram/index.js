@@ -8,6 +8,7 @@ import fileSizeConverter from '../../helpers/fileSizeConverter';
 
 class Diagram extends Component {
   static propTypes = {
+    /** All file statistic */
     filesStatistic: PropTypes.array
   };
 

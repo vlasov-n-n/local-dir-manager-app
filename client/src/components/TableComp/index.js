@@ -20,7 +20,7 @@ class TableComp extends Component {
       path: PropTypes.string.isRequired,
       child: PropTypes.array
     })),
-    /** @type {function} */
+    /** Function for open modal window */
     handleOpenModal: PropTypes.func.isRequired
   };
 

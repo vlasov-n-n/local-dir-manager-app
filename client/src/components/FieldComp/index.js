@@ -8,11 +8,11 @@ import {FieldError} from '../../containers/Home/HomeStyleComp';
 
 class FieldComp extends Component {
   static propTypes = {
-    /** @type {string} Default directory location */
+    /** Default directory location */
     defaultDirectoryPath: PropTypes.string.isRequired,
-    /** @type {function} Create new directory */
+    /** Create new directory */
     createDirAction: PropTypes.func.isRequired,
-    /** @type {string | null} */
+    /** Create dir error */
     createDirError: PropTypes.string,
   };
 

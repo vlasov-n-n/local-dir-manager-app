@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
     res.statusCode = 500;
     res.json({error: 'get_error'})
   }
-
 });
 
 // @route POST api/dir
@@ -41,7 +40,6 @@ router.post('/', (req, res) => {
     res.statusCode = 500;
     return res.json({error: 'create_error'})
   }
-
 });
 
 module.exports = router;

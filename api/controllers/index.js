@@ -33,34 +33,24 @@ const getCache = () => {
  * @returns {Directories}
  */
 const getAllDirController = () => {
-  // const cash = getCache();
-  // if(isEmpty(cash)) {
-  //   const allDirectoryItems = getAllDirs();
-  //   const directoriesList = getDirectoriesList(allDirectoryItems);
-  //   const filesStatistic = getFilesStat(allDirectoryItems);
-  //
-  //   const directories = {
-  //     defaultPath: defaultDirPath,
-  //     directories: directoriesList,
-  //     filesStatistic: filesStatistic
-  //   };
-  //
-  //   setCache(directories);
-  //
-  //   return directories
-  // } else {
-  //   return getCache();
-  // }
+  const cash = getCache();
+  if(isEmpty(cash)) {
+    const allDirectoryItems = getAllDirs();
+    const directoriesList = getDirectoriesList(allDirectoryItems);
+    const filesStatistic = getFilesStat(allDirectoryItems);
 
-  const allDirectoryItems = getAllDirs();
-  const directoriesList = getDirectoriesList(allDirectoryItems);
-  const filesStatistic = getFilesStat(allDirectoryItems);
+    const directories = {
+      defaultPath: defaultDirPath,
+      directories: directoriesList,
+      filesStatistic: filesStatistic
+    };
 
-  return {
-    defaultPath: defaultDirPath,
-    directories: directoriesList,
-    filesStatistic: filesStatistic
-  };
+    setCache(directories);
+
+    return directories
+  } else {
+    return getCache();
+  }
 };
 
 /**
